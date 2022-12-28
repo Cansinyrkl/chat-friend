@@ -1,11 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Chat from "./chat/Chat";
+import { ChatContextProvider } from "./store/context/ChatContext";
+import Bar from "./bar/Bar";
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <ChatContextProvider>
+      <div className="App">
+        <Bar />
+        <Chat />
+      </div>
+    </ChatContextProvider>
   );
 }
 
