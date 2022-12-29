@@ -1,26 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ChatContext } from "../store/context/ChatContext";
+import Input from "../ınput/Input";
+import uuid from "react-uuid";
+
 const Chat = () => {
   const [chat, setChat] = useContext(ChatContext);
-  const [chatSend, setChatSend] = useState("");
-  const onChange = (e) => {
-    setChat(e.target.value);
-  };
 
+  const sendMessage = (chat) => {
+    setChat([...chat, { id: uuid(), chat: chat }]);
+  };
   return (
     <div>
       {chat.map((chat) => (
-        <li key={chat.id}>{chat.chat}</li>
+        <div key={chat.id}>{chat.chat}</div>
       ))}
-
-      <input
-        type="text"
-        onChange={onChange}
-        maxLength="16"
-        placeholder="istediğiniz mesaj"
-        value={chatSend}
-      />
-      <button type="submit">Yolla</button>
+      <Input sendMessage={sendMessage} />
     </div>
   );
 };
