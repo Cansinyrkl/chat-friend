@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
-import uuid from "react-uuid";
-import { ChatContext } from "../store/context/ChatContext";
+import React, { useState } from "react";
+import "./Index.css";
 
 const Input = ({ sendMessage }) => {
-  const [chat, setChat] = useContext(ChatContext);
   const [chatSend, setChatSend] = useState("");
   const onChange = (e) => {
     setChatSend(e.target.value);
@@ -17,13 +15,16 @@ const Input = ({ sendMessage }) => {
     <div>
       <form onSubmit={onSubmitHandle}>
         <input
+          className="ChatInput"
           type="text"
           onChange={onChange}
-          maxLength="16"
+          maxLength="64"
           placeholder="istediğiniz mesaj"
           value={chatSend}
         />
-        <button type="submit">Yolla</button>
+        <button type="submit" className="ChatButton">
+          Send
+        </button>
       </form>
     </div>
   );

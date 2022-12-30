@@ -1,0 +1,35 @@
+.ChatInput {
+  width: 85%;
+  height: 2rem;
+  border-radius: 10px;
+  border: 1px solid rgb(147, 144, 144);
+}
+.ChatButton {
+  font-size: 16px;
+  margin-left: 4px;
+  width: 6.8rem;
+  height: 2.2rem;
+  border-radius: 10px;
+  border: 1px solid rgb(147, 144, 144);
+}
+.ChatButton:hover {
+  background-color: grey;
+  transition: 0.4s;
+  color: white;
+  cursor: pointer;
+}
+.ExitButton {
+  font-size: 16px;
+  margin-top: 34rem;
+  margin-left: 78rem;
+  width: 6rem;
+  height: 2.2rem;
+  border-radius: 10px;
+  border: 1px solid rgb(147, 144, 144);
+}
+.ExitButton:hover {
+  background-color: grey;
+  transition: 0.4s;
+  color: white;
+  cursor: pointer;
+}
