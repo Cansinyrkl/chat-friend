@@ -1,30 +1,31 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
   border: 2px solid #dedede;
   background-color: #f1f1f1;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
-}
-.darker {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.darker {
-  border-color: #ccc;
-  background-color: #ddd;
 }
 
 .container img {
   max-width: 80px;
-  margin-right: 20px;
   border-radius: 10px;
 }
-.darker img {
-  max-width: 80px;
-  margin-right: 20px;
-  border-radius: 10px;
+
+.container .text-container-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.container .text-container-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
 }

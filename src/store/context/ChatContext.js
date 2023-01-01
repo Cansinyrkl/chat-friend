@@ -4,8 +4,8 @@ export const ChatContext = createContext(null);
 
 export function ChatContextProvider({ children }) {
   const [chat, setChat] = useState([
-    { id: uuid(), chat: "chat1", sendTheMessage: "ahmet" },
-    { id: uuid(), chat: "chat2", sendTheMessage: "mehmet" },
+    { id: uuid(), chatId: 1, sendTheMessage: "ahmet" },
+    { id: uuid(), chatId: 2, sendTheMessage: "mehmet" },
   ]);
   return (
     <ChatContext.Provider value={[chat, setChat]}>

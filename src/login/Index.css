@@ -18,16 +18,24 @@
   color: white;
   cursor: pointer;
 }
-.ExitButton {
+
+.exit-btn-container {
+  display: flex;
+  width: 100%;
+  margin-top: 8em;
+  justify-content: center;
+  align-items: center;
+}
+
+.exit-btn-container .ExitButton {
   font-size: 16px;
-  margin-top: 34rem;
-  margin-left: 78rem;
+  justify-content: center;
   width: 6rem;
   height: 2.2rem;
   border-radius: 10px;
   border: 1px solid rgb(147, 144, 144);
 }
-.ExitButton:hover {
+.exit-btn-container .ExitButton:hover {
   background-color: grey;
   transition: 0.4s;
   color: white;

@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../store/context/UserContext";
+import { removeUserInfo, setUserInfo } from "../utils/Helpers";
 import "./Index.css";
 const Login = () => {
   const navigate = useNavigate();
-  const [users] = useContext(UserContext);
+  const { users } = useContext(UserContext);
   const [userName, setUserName] = useState("");
   const [userPasswword, setUserPasswword] = useState("");
 
@@ -19,7 +20,8 @@ const Login = () => {
       const loginCheck =
         user.username === userName && user.passwword === userPasswword;
       if (loginCheck) {
-        navigate("/chat");
+        setUserInfo(user.chatId);
+        return navigate("/chat");
       }
     });
   };

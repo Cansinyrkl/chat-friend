@@ -1,28 +1,26 @@
 import React, { useState } from "react";
+import { useStatus } from "../store/context/StatusContext";
 import "./Index.css";
 
-const Input = ({ sendMessage }) => {
-  const [chatSend, setChatSend] = useState("");
+const Input = ({click}) => {
+  const { sendValue, setSendValue } = useStatus();
+
   const onChange = (e) => {
-    setChatSend(e.target.value);
-  };
-  const onSubmitHandle = (e) => {
-    e.preventDefault();
-    sendMessage(chatSend);
+    setSendValue(e.target.value);
   };
 
   return (
     <div>
-      <form onSubmit={onSubmitHandle}>
+      <form>
         <input
           className="ChatInput"
           type="text"
           onChange={onChange}
           maxLength="64"
           placeholder="istediğiniz mesaj"
-          value={chatSend}
+          value={sendValue}
         />
-        <button type="submit" className="ChatButton">
+        <button type="submit" className="ChatButton" onClick={click}>
           Send
         </button>
       </form>
