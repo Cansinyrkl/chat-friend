@@ -11,12 +11,10 @@ function App() {
       <StatusContextProvider>
         <UserContextProvider>
           <ChatContextProvider>
-            <div className="Container">
-              <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/chat" element={<Chat />} />
-              </Routes>
-            </div>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/chat" element={<Chat />} />
+            </Routes>
           </ChatContextProvider>
         </UserContextProvider>
       </StatusContextProvider>
