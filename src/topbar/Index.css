@@ -1,0 +1,29 @@
+.TopbarContext {
+  display: flex;
+  align-items: center;
+}
+
+.LoginName {
+  color: #fdfffe;
+  margin-left: 14px;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+.LoginPic {
+  width: 40px;
+  height: 40px;
+  border-radius: 60px;
+}
+.ExitButton {
+  color: #fdfffe;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  width: 2.4rem;
+  height: 2rem;
+  transition: background-color 1s, border-radius 1s;
+}
+.ExitButton:hover {
+  background-color: #a19d9d;
+  border-radius: 100%;
+}
