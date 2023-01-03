@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../store/context/UserContext";
-import { removeUserInfo, setUserInfo } from "../utils/Helpers";
+import { setUserInfo } from "../utils/Helpers";
 import "./Index.css";
 const Login = () => {
   const navigate = useNavigate();
