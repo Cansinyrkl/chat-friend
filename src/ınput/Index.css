@@ -1,0 +1,15 @@
+.Faicon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #00a884;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  margin-left: 4px;
+}
+.buttonIn {
+  display: flex;
+  flex-direction: row;
+}

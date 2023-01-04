@@ -1,18 +1,21 @@
+import "./Index.css";
 import uuid from "react-uuid";
 import Input from "../ınput/Input";
-import React, { useContext } from "react";
-import { ChatContext } from "../store/context/ChatContext";
-import "./Index.css";
 import Ahmet from "./image/01.jpeg";
 import Mehmet from "./image/02.jpeg";
-import { useStatus } from "../store/context/StatusContext";
-import { getUserInfo, removeUserInfo } from "../utils/Helpers";
 import TopBar from "../topbar/TopBar";
+import React, { useContext } from "react";
+import darktheme from "./image/darktheme.jpg";
+import { getUserInfo } from "../utils/Helpers";
+import { ChatContext } from "../store/context/ChatContext";
+import { useStatus } from "../store/context/StatusContext";
+import { UserContext } from "../store/context/UserContext";
 
 const Chat = () => {
+  const { users } = useContext(UserContext);
   const [chat, setChat] = useContext(ChatContext);
-  const { sendValue } = useStatus();
   const loggedUserChatId = getUserInfo();
+  const { sendValue, setSendValue } = useStatus();
 
   const handleSendClick = (e) => {
     e.preventDefault();
@@ -25,34 +28,35 @@ const Chat = () => {
         return [...prev, { id: uuid(), chatId: 2, sendTheMessage: sendValue }];
       });
     }
+    setSendValue("");
   };
 
   return (
     <>
       <TopBar className="TopBar" />
-      <div className="container">
+      <div
+        className="container"
+        style={{ backgroundImage: `url(${darktheme})` }}
+      >
         {chat.map((chat) => {
-          if (chat.chatId === 1) {
-            return (
-              <div className="text-container-left" key={chat.id}>
-                <img src={Ahmet} alt="Avatar" className="Images" />
-                {chat.sendTheMessage}
-                {chat.chat}
-              </div>
-            );
-          } else if (chat.chatId === 2) {
+          if (chat.chatId === 2) {
             return (
               <div className="text-container-right" key={chat.id}>
                 {chat.sendTheMessage}
                 <img src={Mehmet} alt="Avatar" className="Images" />
-                {chat.chat}
+              </div>
+            );
+          } else if (chat.chatId === 1) {
+            return (
+              <div className="text-container-left" key={chat.id}>
+                <img src={Ahmet} alt="Avatar" className="Images" />
+                {chat.sendTheMessage}
               </div>
             );
           }
         })}
       </div>
       <Input className="ChatInput" click={handleSendClick} />
-      <div className="exit-btn-container"></div>
     </>
   );
 };
