@@ -4,7 +4,7 @@ import Input from "../ınput/Input";
 import Ahmet from "./image/01.jpeg";
 import Mehmet from "./image/02.jpeg";
 import TopBar from "../topbar/TopBar";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import darktheme from "./image/darktheme.jpg";
 import { getUserInfo } from "../utils/Helpers";
 import { ChatContext } from "../store/context/ChatContext";
@@ -31,6 +31,22 @@ const Chat = () => {
     setSendValue("");
   };
 
+  const bottomScrollRef = useRef();
+
+  const scrollToBottom = () => {
+    bottomScrollRef?.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chat]);
+
+  const userInfo = users.find((user) => {
+    if (user.id !== loggedUserChatId) {
+      return user;
+    }
+  });
+
   return (
     <>
       <TopBar className="TopBar" />
@@ -39,22 +55,22 @@ const Chat = () => {
         style={{ backgroundImage: `url(${darktheme})` }}
       >
         {chat.map((chat) => {
-          if (chat.chatId === 2) {
+          if (chat.chatId === loggedUserChatId) {
             return (
               <div className="text-container-right" key={chat.id}>
                 {chat.sendTheMessage}
-                <img src={Mehmet} alt="Avatar" className="Images" />
               </div>
             );
-          } else if (chat.chatId === 1) {
+          } else if (chat.chatId === 1 || chat.chatId === 2) {
             return (
               <div className="text-container-left" key={chat.id}>
-                <img src={Ahmet} alt="Avatar" className="Images" />
-                {chat.sendTheMessage}
+                <div className="username">{userInfo.username}</div>
+                <div className="text-container">{chat.sendTheMessage}</div>
               </div>
             );
           }
         })}
+        <div ref={bottomScrollRef}></div>
       </div>
       <Input className="ChatInput" click={handleSendClick} />
     </>
