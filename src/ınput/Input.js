@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useStatus } from "../store/context/StatusContext";
 import "./Index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,15 +8,37 @@ import {
   faPaperclip,
   faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
-import TopBar from "../topbar/TopBar";
 
 const Input = ({ click }) => {
   const { sendValue, setSendValue } = useStatus();
-
+  const [isWritingIcon, setIsWritingIcon] = useState();
   const onChange = (e) => {
     setSendValue(e.target.value);
   };
 
+  useEffect(() => {
+    if (sendValue?.length > 0) {
+      setIsWritingIcon(
+        <FontAwesomeIcon
+          type="submit"
+          onClick={click}
+          icon={faPaperPlane}
+          size="lg"
+        />
+      );
+    } else {
+      setIsWritingIcon(
+        <FontAwesomeIcon
+          type="submit"
+          onClick={click}
+          icon={faMicrophone}
+          size="lg"
+        />
+      );
+    }
+  }, [sendValue]);
+
+  console.log(isWritingIcon);
   return (
     <div className="buttonIn">
       <input
@@ -27,14 +49,7 @@ const Input = ({ click }) => {
         placeholder="Mesaj"
         value={sendValue}
       />
-      <div className="Faicon">
-        <FontAwesomeIcon
-          type="submit"
-          onClick={click}
-          icon={faMicrophone}
-          size="lg"
-        />
-      </div>
+      <div className="Faicon">{isWritingIcon}</div>
     </div>
   );
 };

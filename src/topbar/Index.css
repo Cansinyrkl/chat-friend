@@ -1,3 +1,14 @@
+.TopBar {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #1f2c34;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
 .TopbarContext {
   display: flex;
   align-items: center;
@@ -27,4 +38,7 @@
   padding-left: 15rem;
   gap: 20px;
   color: #fdfffe;
+}
+.Writing {
+  font-size: 12px;
 }
