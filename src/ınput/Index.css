@@ -8,6 +8,7 @@
   height: 3rem;
   border-radius: 100%;
   margin-left: 4px;
+  cursor: pointer;
 }
 .buttonIn {
   display: flex;

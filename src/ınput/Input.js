@@ -48,7 +48,7 @@ const Input = ({ click }) => {
         placeholder="Mesaj"
         value={sendValue}
       />
-      <div className="Faicon">{isWritingIcon}</div>
+      <button className="Faicon">{isWritingIcon}</button>
     </div>
   );
 };
