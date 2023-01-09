@@ -1,8 +1,8 @@
 .container {
   gap: 10px;
-  padding: 10px;
-  width: 100%px;
-  height: 500px;
+  padding: 16px;
+  width: auto;
+  height: 750px;
   display: flex;
   overflow-y: auto;
   border-radius: 5px;
@@ -17,12 +17,16 @@
 }
 
 .container .text-container-left {
+  width: 100px;
   border-radius: 0% 20px 20px 20px;
   background-color: #1f2c34;
 }
 
 .container .text-container-right {
   height: 40px;
+  min-width: 80px;
+  width: auto;
+  margin-left: auto;
   padding-right: 14px;
   display: flex;
   color: #fee;

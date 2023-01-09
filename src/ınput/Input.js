@@ -38,7 +38,6 @@ const Input = ({ click }) => {
     }
   }, [sendValue]);
 
-  console.log(isWritingIcon);
   return (
     <div className="buttonIn">
       <input

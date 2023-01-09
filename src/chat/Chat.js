@@ -10,6 +10,7 @@ import { getUserInfo } from "../utils/Helpers";
 import { ChatContext } from "../store/context/ChatContext";
 import { useStatus } from "../store/context/StatusContext";
 import { UserContext } from "../store/context/UserContext";
+import Popup from "../popup/Popup";
 
 const Chat = () => {
   const { users } = useContext(UserContext);
@@ -49,6 +50,7 @@ const Chat = () => {
 
   return (
     <>
+      <Popup />
       <TopBar className="TopBar" />
       <div
         className="container"
