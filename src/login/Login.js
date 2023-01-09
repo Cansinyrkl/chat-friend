@@ -15,7 +15,8 @@ const Login = () => {
   const Passwword = (e) => {
     setUserPasswword(e.target.value);
   };
-  const onSubmit = () => {
+  const onSubmit = (event) => {
+    event.preventDefault();
     users.find((user) => {
       const loginCheck =
         user.username === userName && user.passwword === userPasswword;
@@ -30,18 +31,22 @@ const Login = () => {
     <div className="LoginContainer">
       <form onSubmit={onSubmit}>
         <input
+          className="userInput"
           type="text"
           onChange={UserName}
           placeholder="UserName"
           value={userName}
         />
         <input
+          className="userInput"
           type="password"
           onChange={Passwword}
           placeholder="Passwword"
           value={userPasswword}
         />
-        <button type="submit">Yolla</button>
+        <button className="loginButton" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );

@@ -1,0 +1,32 @@
+.popup {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  left: 94%;
+  top: 94%;
+  border-radius: 200px;
+  transform: translate(-50%, -50%);
+  background: rgb(177, 171, 171);
+  width: 200px;
+  height: 60px;
+  opacity: 1;
+  animation: popup 1s 1.8s ease forwards;
+}
+.LoginPicPopup {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 60px;
+}
+
+@keyframes popup {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
