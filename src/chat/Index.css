@@ -20,6 +20,7 @@
   width: 100px;
   border-radius: 0% 20px 20px 20px;
   background-color: #1f2c34;
+  user-select: none;
 }
 
 .container .text-container-right {
@@ -34,7 +35,10 @@
   border-radius: 20px 0px 20px 20px;
   background-color: #005d4b;
   justify-content: flex-end;
+  border: none;
+  user-select: none;
 }
+
 .text-container {
   margin-left: 10px;
   color: #ffffff;

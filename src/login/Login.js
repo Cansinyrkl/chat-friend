@@ -31,6 +31,7 @@ const Login = () => {
     <div className="LoginContainer">
       <form onSubmit={onSubmit}>
         <input
+          required={true}
           className="userInput"
           type="text"
           onChange={UserName}
@@ -38,6 +39,7 @@ const Login = () => {
           value={userName}
         />
         <input
+          required={true}
           className="userInput"
           type="password"
           onChange={Passwword}
