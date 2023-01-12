@@ -1,8 +1,6 @@
 import "./Index.css";
 import uuid from "react-uuid";
 import Input from "../ınput/Input";
-import Ahmet from "./image/01.jpeg";
-import Mehmet from "./image/02.jpeg";
 import TopBar from "../topbar/TopBar";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import darktheme from "./image/darktheme.jpg";
@@ -11,12 +9,14 @@ import { ChatContext } from "../store/context/ChatContext";
 import { useStatus } from "../store/context/StatusContext";
 import { UserContext } from "../store/context/UserContext";
 import Popup from "../popup/Popup";
+import { loggedUserInfo } from "../utils/Helpers";
 
 const Chat = () => {
   const { users } = useContext(UserContext);
   const [chat, setChat] = useContext(ChatContext);
   const loggedUserChatId = getUserInfo();
   const { sendValue, setSendValue } = useStatus();
+  const userInfo = loggedUserInfo(users, loggedUserChatId);
 
   const handleSendClick = (e) => {
     e.preventDefault();
@@ -42,11 +42,11 @@ const Chat = () => {
     scrollToBottom();
   }, [chat]);
 
-  const userInfo = users.find((user) => {
-    if (user.id !== loggedUserChatId) {
-      return user;
-    }
-  });
+  const deleteByValue = (value) => {
+    setChat((oldValues) => {
+      return oldValues.filter((chat) => chat !== value);
+    });
+  };
 
   return (
     <>
@@ -59,15 +59,23 @@ const Chat = () => {
         {chat.map((chat) => {
           if (chat.chatId === loggedUserChatId) {
             return (
-              <div className="text-container-right" key={chat.id}>
-                {chat.sendTheMessage}
-              </div>
+              <button className="text-container-right" key={chat.chatId}>
+                <div onClick={() => deleteByValue(chat)}>
+                  {chat.sendTheMessage}
+                </div>
+              </button>
             );
           } else if (chat.chatId === 1 || chat.chatId === 2) {
             return (
               <div className="text-container-left" key={chat.id}>
                 <div className="username">{userInfo.username}</div>
-                <div className="text-container">{chat.sendTheMessage}</div>
+
+                <div
+                  className="text-container"
+                  onClick={() => deleteByValue(chat)}
+                >
+                  {chat.sendTheMessage}
+                </div>
               </div>
             );
           }
