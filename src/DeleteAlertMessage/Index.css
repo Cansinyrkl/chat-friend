@@ -1,0 +1,11 @@
+.popup-window {
+  position: absolute;
+  background-color: rebeccapurple;
+  height: 100px;
+  width: 498px;
+  top: 30%;
+  bottom: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
