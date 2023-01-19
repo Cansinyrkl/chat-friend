@@ -72,3 +72,12 @@
   color: white;
   cursor: pointer;
 }
+
+.delete-button {
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  color: wheat;
+  background-color: rgb(176, 134, 219);
+}
+

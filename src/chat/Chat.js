@@ -10,6 +10,7 @@ import { useStatus } from "../store/context/StatusContext";
 import { UserContext } from "../store/context/UserContext";
 import Popup from "../popup/Popup";
 import { loggedUserInfo } from "../utils/Helpers";
+import DeleteAlertMessage from "../DeleteAlertMessage/DeleteAlertMessage";
 
 const Chat = () => {
   const { users } = useContext(UserContext);
@@ -17,6 +18,11 @@ const Chat = () => {
   const loggedUserChatId = getUserInfo();
   const { sendValue, setSendValue } = useStatus();
   const userInfo = loggedUserInfo(users, loggedUserChatId);
+  const [rightClick, setRightClick] = useState({
+    x: null,
+    y: null,
+  });
+  const [showPopupWindow, setShowPopupWindow] = useState(false);
 
   const handleSendClick = (e) => {
     e.preventDefault();
@@ -48,28 +54,43 @@ const Chat = () => {
     });
   };
 
+  const rightClickMenu = (e, chat) => {
+    e.preventDefault();
+    const xPosition = e?.pageX;
+    const yPosition = e?.pageY;
+    setRightClick({ x: xPosition, y: yPosition });
+    setShowPopupWindow(false);
+  };
+
   return (
     <>
       <Popup />
       <TopBar className="TopBar" />
       <div
+        onClick={() => {
+          setRightClick({ x: null, y: null });
+          setShowPopupWindow(false);
+        }}
         className="container"
         style={{ backgroundImage: `url(${darktheme})` }}
       >
         {chat.map((chat) => {
           if (chat.chatId === loggedUserChatId) {
             return (
-              <button className="text-container-right" key={chat.chatId}>
-                <div onClick={() => deleteByValue(chat)}>
-                  {chat.sendTheMessage}
-                </div>
-              </button>
+              <div
+                className="text-container-right"
+                key={chat.chatId}
+                onContextMenu={(e) => {
+                  rightClickMenu(e, chat);
+                }}
+              >
+                {chat.sendTheMessage}
+              </div>
             );
           } else if (chat.chatId === 1 || chat.chatId === 2) {
             return (
               <div className="text-container-left" key={chat.id}>
                 <div className="username">{userInfo.username}</div>
-
                 <div
                   className="text-container"
                   onClick={() => deleteByValue(chat)}
@@ -83,6 +104,25 @@ const Chat = () => {
         <div ref={bottomScrollRef}></div>
       </div>
       <Input className="ChatInput" click={handleSendClick} />
+      {rightClick?.x && rightClick?.y && (
+        <button
+          className="delete-button"
+          type="button"
+          style={{
+            top: rightClick?.y,
+            left: rightClick?.x,
+          }}
+          onClick={() => {
+            setRightClick({ x: null, y: null });
+            setShowPopupWindow(true);
+          }}
+        >
+          Delete
+        </button>
+      )}
+      {showPopupWindow ? (
+        <DeleteAlertMessage setShowPopupWindow={setShowPopupWindow} />
+      ) : null}
     </>
   );
 };
