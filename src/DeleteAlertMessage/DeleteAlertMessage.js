@@ -3,7 +3,7 @@ import "./Index.css";
 import { ChatContext } from "../store/context/ChatContext";
 
 const DeleteAlertMessage = ({ setShowPopupWindow }) => {
-  const [chat, setChat] = useContext(ChatContext);
+  const { chat, setChat } = useContext(ChatContext);
 
   const deleteByValue = (value) => {
     setChat((oldValues) => {

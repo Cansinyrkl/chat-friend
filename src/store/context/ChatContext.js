@@ -8,7 +8,7 @@ export function ChatContextProvider({ children }) {
     { id: uuid(), chatId: 2, sendTheMessage: "İyi Senden" },
   ]);
   return (
-    <ChatContext.Provider value={[chat, setChat]}>
+    <ChatContext.Provider value={{chat, setChat}}>
       {children}
     </ChatContext.Provider>
   );

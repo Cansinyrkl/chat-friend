@@ -14,7 +14,7 @@ import DeleteAlertMessage from "../DeleteAlertMessage/DeleteAlertMessage";
 
 const Chat = () => {
   const { users } = useContext(UserContext);
-  const [chat, setChat] = useContext(ChatContext);
+  const {chat, setChat} = useContext(ChatContext);
   const loggedUserChatId = getUserInfo();
   const { sendValue, setSendValue } = useStatus();
   const userInfo = loggedUserInfo(users, loggedUserChatId);
